@@ -1,0 +1,5 @@
+cd "C:\Users\burge\Desktop\agreg\mao_probas_stats"
+git pull
+git add . 
+git commit -a -m "Auto-Git-Backup $(date "+%d.%m.%Y %H:%M "|sed -e ' s/\"/\\\"/g' )"
+git push -u origin master

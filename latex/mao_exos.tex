@@ -181,9 +181,11 @@ $\mathbb{P}(A)=\frac{\text{card}(A)}{\text{card}(\Omega)}=\frac{\sum_{k=0}^d(-1)
 
 $A_j=$"le tiroir $j$ est vide".\\
 
-$A=\bigcap_{j=1}^d\complement_{A_j}=\complement_{\bigcup_{j=1}^dA_j}$\\
+$A=\bigcap_{j=1}^d {}^cA_j= {}^c\left(\bigcup_{j=1}^dA_j\right)$\\
 
-\hbox{
+\begin{center}
+\fbox{%
+	\parbox{0.9\linewidth}{%
 \noindent\textbf{Formule du crible de Poincaré :} $\mathbb{P}\left(\bigcup_{j=1}^dA_j\right)=\sum_{r=1}^d(-1)^{r-1}\sum_{1\le j_1<\ldots<j_n\le d}\mathbb{P}(A_{j_1}\cap\ldots\cap A_{j_r})$\\
 Moyen mnémotechnique : \\
 
@@ -196,7 +198,9 @@ Moyen mnémotechnique : \\
 \end{tikzpicture}
 \end{center}
 $\mathbb{P}(A_1)+\mathbb{P}(A_2)+\mathbb{P}(A_3)+\mathbb{P}(A_4)$, on compte les intersections en trop.
+    }
 }
+\end{center}
 
 \begin{rema}
 On peut imaginer une preuve utilisant la loi multinomial.
@@ -204,9 +208,38 @@ On peut imaginer une preuve utilisant la loi multinomial.
 
 \subsection{Exercice 3 : Soit \texorpdfstring{$n$}{TEXT} boules dans \texorpdfstring{$(A_n)_{n\in\mathbf{N}}$}{TEXT} une suite d'événements, montrer que \texorpdfstring{$n$}{TEXT} boules dans \texorpdfstring{$\mathbb{P}(\limsup A_n)=1$}{TEXT} si et seulement si \texorpdfstring{$\sum_{n=1}^{+\infty}\mathbb{P}(A\cap A_n)=+\infty$}{TEXT} pour tout événement \texorpdfstring{$A$}{TEXT} de probabilité strictement positive.}
 
-Montrons $\Rightarrow$ par contraposée. On suppose qu'il existe un événement $A$ de probabilité strictement positive telle que $\sum_{n=1}^{+\infty}\mathbb{P}(A\cap A_n)<+\infty$. Par Borel-Cantelli 1 : $\mathbb{P}(\limsup A\cap A_n)=0$, or $\mathbb{P}(\limsup A\cap A_n)=\mathbb{P}(A\cap\limsup A_n)$, donc cette dernière quantité est nulle. Par l'absurde, si $\mathbb{P}(\limsup A_n)=1$ alors $\mathbb{P}(A\cap \limsup A_n)=\mathbb{P}(A)>0$, ce qui est contradictoire. En conclusion, $\mathbb{P}(\limsup A_n)<1$.
+Montrons $\Rightarrow$ par contraposée. On suppose qu'il existe un événement $A$ de probabilité strictement positive telle que $\sum_{n=1}^{+\infty}\mathbb{P}(A\cap A_n)<+\infty$. Par Borel-Cantelli 1 : $\mathbb{P}(\limsup A\cap A_n)=0$, or $\mathbb{P}(\limsup A\cap A_n)=\mathbb{P}(A\cap\limsup A_n)$, donc cette dernière quantité est nulle. Par l'absurde, si $\mathbb{P}(\limsup A_n)=1$ alors $\mathbb{P}(A\cap \limsup A_n)=\mathbb{P}(A)>0$, ce qui est contradictoire. En conclusion, $\mathbb{P}(\limsup A_n)<1$.\\
+
+\color{red}réciproque ??\color{black}
 
 
+\subsection{Exercice 4 : Montrer que des événements \texorpdfstring{$A_1,\ldots,A_n$}{TEXT} sont indépendants si et seulement si leurs complémentaires \texorpdfstring{$^cA1,\ldots,^cAn$}{TEXT} sont indépendants.}
 
+On utilise la formule suivante :
+
+\begin{center}
+    \fbox{%
+    $\mathbb{P}({}^cA_1\cap A_2)=\mathbb{P}(A_2)-\mathbb{P}(A_1\cap A_2)$
+        } 
+\end{center}
+et on procède par récurrence.
+
+\subsection{Montrer que, dans le second lemme de Borel-Cantelli, la probabilité considérée vaut \texorpdfstring{$0$}{TEXT} ou \texorpdfstring{$1$}{TEXT}. Discuter la nécessité de l'hypothèse d'indépendance dans ce lemme.}
+
+\begin{center}
+    \fbox{%
+        \parbox{0.9\linewidth}{%
+        \noindent \textbf{Loi du $0-1$ de Kolmogorov :} Soit $(\mathcal{F}_k)$ une suite de tribus. Tout événement appartenant à la tribu terminale $\mathcal{T}=\bigcap_{n\in\mathbf{N}}\bigcup_{k\ge n}\mathcal{F}_k$ est de probabilité $0$  ou $1$.
+        }
+    }
+\end{center}
+
+\subsection{Un examen systématique de dépistage est institué pour détecter une maladie. On sait que le risque d'avoir cette maladie est \texorpdfstring{$10^{-3}$}{TEXT} dans la population générale et \texorpdfstring{$0.2$}{TEXT} dans une population définie à risque. Le test donne des faux positifs avec probabilité \texorpdfstring{$0.1$}{TEXT} et faux négatifs avec probabilité \texorpdfstring{$0.3$}{TEXT}. Un individu subit un test, qui est positif. Quelle est la probabilité qu'il ait la maladie s'il fait partie de la population générale ? S'il fait partie de la population à risque ?}
+
+Utilisation de la formule de Bayes.
+
+\subsection{Soit \texorpdfstring{$\mathcal{G}$}{TEXT} une tribu et \texorpdfstring{$(X_i)_{i\in I}$}{TEXT} une famille de variables aléatoires. Montrer que \texorpdfstring{$\mathcal{G}$}{TEXT} et \texorpdfstring{$\sigma(X_i,i\in I)$}{TEXT} sont indépendantes si et seulement si \texorpdfstring{$\mathcal{G}$}{TEXT} et \texorpdfstring{$\sigma(X_i,i\in J)$}{TEXT} sont indépendantes pour toute partie finie \texorpdfstring{$J$}{TEXT} de \texorpdfstring{$I$}{TEXT}.}
+
+\subsection{Soit \texorpdfstring{$X$}{TEXT} une variable aléatoire uniforme sur \texorpdfstring{$[0,1]$}{TEXT}. Quelle est la loi de \texorpdfstring{$\min\left(X,\frac{1}{3}\right)$}{TEXT} ?}
 
 \end{document}

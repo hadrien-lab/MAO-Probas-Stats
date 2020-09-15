@@ -1,0 +1,212 @@
+\documentclass[a4paper, 10pt, oneside]{article}
+\renewcommand{\contentsname}{Contenu}
+\usepackage[utf8]{inputenc}
+\pagenumbering{arabic}
+\renewcommand*\sfdefault{ugq}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{datetime}  
+\usepackage{lmodern}
+\usepackage[
+  top=0.5in,
+  bottom=0.7in,
+  left=0.7in,
+  right=0.7in,
+  headheight=17pt, % as per the warning by fancyhdr
+  includehead,includefoot,
+  heightrounded, % to avoid spurious underfull messages
+]{geometry} 
+\renewcommand{\baselinestretch}{1.5}
+\usepackage[some]{background}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{amsmath,esint}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16} 
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{xpatch}
+\usepackage{marvosym}
+\usepackage{amsthm}
+\usepackage[justification=centering]{caption}
+\usepackage[all]{xy}
+\usepackage{empheq}
+\usepackage{mathrsfs}
+\usetikzlibrary{automata,topaths,arrows.meta,calc,patterns,angles,quotes,positioning,graphs,graphs.standard,positioning,chains,fit,shapes,calc}
+%% The following commands all in one way or another set us up to be able to draw graphs.
+%%
+%% The calc package is used for calculating angles to evenly space vertices in circular arrangements.
+\usepackage{calc}
+%%
+%% The tikz package is used for doing the actual drawing.
+\usepackage{tikz}
+%%
+%% In order to be able to put arrowheads in the middle of directed edges, we need an extra library.
+\usetikzlibrary{decorations.markings}
+%%
+%% The next line says how the "vertex" style of nodes should look: drawn as small circles.
+\tikzstyle{vertex}=[circle, draw, inner sep=0pt, minimum size=6pt]
+%%
+%% Next, we make a \vertex command as a shorthand in place of \node[vertex} to get that style.
+\newcommand{\vertex}{\node[vertex]}
+%%
+%% Finally, we declare a "counter", which is what LaTeX calls an integer variable, for use in
+%% the calculations of angles for evenly spacing vertices in circular arrangements.
+\newcounter{Angle}
+
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{fancyhdr}
+\usepackage{courier}
+\usepackage[most]{tcolorbox}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{lcg}
+\newcommand{\random}{\rand\arabic{rand}}
+
+\usepackage{attachfile}
+\usepackage{navigator}
+\usepackage{float}
+\usepackage{eso-pic}
+
+\usepackage{pdfpages}
+
+\usepackage{listings}
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    aboveskip={1.0\baselineskip},
+    belowskip={1.0\baselineskip},
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=4,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    numbers=left,
+    numberstyle=\small,
+    stepnumber=1,
+    numbersep=10pt,
+    captionpos=t,
+    escapeinside={\%*}{*)}
+}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead[L,R]{}
+\fancyhead[L,R]{}
+\fancyfoot[C]{\thepage}
+
+\newtcolorbox{activitybox}[1][]{%
+    breakable,
+    enhanced,
+    colback=white,
+    colframe=black,
+    coltitle=white,
+    #1
+}
+
+\newcommand*{\fakebreak}{\par\vspace{\textheight minus \textheight}\pagebreak}
+\newcommand\bord{\boldsymbol{B}}
+\newcommand\lapla{\boldsymbol{\mathcal{L}}}
+
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+\definecolor{blueee}{rgb}{0.2, 0.2, 0.6}
+
+\hypersetup{
+colorlinks = true,
+allcolors = blueee,
+linkbordercolor = {white},
+citecolor = black,}
+
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\begin{document}
+\definecolor{myblue}{RGB}{80,80,160}
+\definecolor{mygreen}{RGB}{80,160,80}
+
+
+\newtheorem{theo}{Théorème}
+\newtheorem{prop}[theo]{Proposition}
+\newtheorem{coro}[theo]{Corollaire}
+\newtheorem{lemme}[theo]{Lemme
+}
+\theoremstyle{definition}
+\newtheorem{defi}{Définition}
+\newtheorem*{rema}{Remarque}
+\newtheorem*{exem}{Exemple}
+\newtheorem*{preuve}{Preuve}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{appli}{Application}
+
+\section*{TD1 : Probabilités, rappels sur les notions de base}
+
+\subsection{Une tribu est-elle stable par intersections dénombrables ?}
+
+Par stabilité de la tribu par union dénombrable et par passage au complémentaire :
+$$
+\forall(A_n)\in\mathcal{F}^\mathbf{N},\qquad\bigcap_{n\in\mathbf{N}}A_n=\overline{\bigcup_{n\in\mathbf{N}}\overline{A_n}}\in\mathcal{F} 
+$$
+
+\subsection{On répartit uniformément \texorpdfstring{$n$}{TEXT} boules dans \texorpdfstring{$d$}{TEXT} tiroirs. Quelle est la probabilité que tous les tiroirs soient occupés ?}
+
+$\Omega=\{1\ldots d\}^n\qquad \mathcal{F}=\mathcal{P}(\Omega)\qquad\mathbb{P}=\text{équiprobabilité}$\\
+
+
+\textbf{Première solution : combinatoire}
+
+$A=\{\text{fonctions }\{1\ldots n\}\xrightarrow[]{}\{1\ldots d\}\text{ surjectives}\}$\\
+
+$\mathbb{P}(A)=\frac{\text{card}(A)}{\text{card}(\Omega)}=\frac{\sum_{k=0}^d(-1)^{d-k}{d\choose k} k^n}{d^n}$\\
+
+\textbf{Deuxième solution : probas}
+
+$A_j=$"le tiroir $j$ est vide".\\
+
+$A=\bigcap_{j=1}^d\complement_{A_j}=\complement_{\bigcup_{j=1}^dA_j}$\\
+
+\hbox{
+\noindent\textbf{Formule du crible de Poincaré :} $\mathbb{P}\left(\bigcup_{j=1}^dA_j\right)=\sum_{r=1}^d(-1)^{r-1}\sum_{1\le j_1<\ldots<j_n\le d}\mathbb{P}(A_{j_1}\cap\ldots\cap A_{j_r})$\\
+Moyen mnémotechnique : \\
+
+\begin{center}
+\begin{tikzpicture}
+    \draw (0,0) circle (1);
+    \draw (1.1,0.75) circle (1);
+    \draw (1.1,-0.75) circle (1);
+    \draw (2.2,0) circle (1);
+\end{tikzpicture}
+\end{center}
+$\mathbb{P}(A_1)+\mathbb{P}(A_2)+\mathbb{P}(A_3)+\mathbb{P}(A_4)$, on compte les intersections en trop.
+}
+
+\begin{rema}
+On peut imaginer une preuve utilisant la loi multinomial.
+\end{rema}
+
+\subsection{Exercice 3 : Soit \texorpdfstring{$n$}{TEXT} boules dans \texorpdfstring{$(A_n)_{n\in\mathbf{N}}$}{TEXT} une suite d'événements, montrer que \texorpdfstring{$n$}{TEXT} boules dans \texorpdfstring{$\mathbb{P}(\limsup A_n)=1$}{TEXT} si et seulement si \texorpdfstring{$\sum_{n=1}^{+\infty}\mathbb{P}(A\cap A_n)=+\infty$}{TEXT} pour tout événement \texorpdfstring{$A$}{TEXT} de probabilité strictement positive.}
+
+Montrons $\Rightarrow$ par contraposée. On suppose qu'il existe un événement $A$ de probabilité strictement positive telle que $\sum_{n=1}^{+\infty}\mathbb{P}(A\cap A_n)<+\infty$. Par Borel-Cantelli 1 : $\mathbb{P}(\limsup A\cap A_n)=0$, or $\mathbb{P}(\limsup A\cap A_n)=\mathbb{P}(A\cap\limsup A_n)$, donc cette dernière quantité est nulle. Par l'absurde, si $\mathbb{P}(\limsup A_n)=1$ alors $\mathbb{P}(A\cap \limsup A_n)=\mathbb{P}(A)>0$, ce qui est contradictoire. En conclusion, $\mathbb{P}(\limsup A_n)<1$.
+
+
+
+
+\end{document}
